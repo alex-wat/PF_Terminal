@@ -1,0 +1,121 @@
+<!DOCTYPE html> <html><head>
+    <!--Adds title and image to tab-->
+    <title>Portfolio-Term</title>
+    <link rel="icon" href="http://assets.stickpng.com/images/584999937b7d4d76317f5ffd.png">
+    <!--Adds a nice font: VT323-->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&amp;family=VT323&amp;display=swap" rel="stylesheet">
+<script src="jquery.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<!--
+      ___           ___           ___           ___ 
+     /\__\         /\  \         /\__\         /\__\
+    /:/  /         \:\  \       /::|  |       /:/  /
+   /:/__/           \:\  \     /:|:|  |      /:/  / 
+  /::\  \ ___       /::\  \   /:/|:|__|__   /:/  /  
+ /:/\:\  /\__\     /:/\:\__\ /:/ |::::\__\ /:/__/   
+ \/__\:\/:/  /    /:/  \/__/ \/__/~~/:/  / \:\  \   
+      \::/  /    /:/  /            /:/  /   \:\  \  
+      /:/  /     \/__/            /:/  /     \:\  \ 
+     /:/  /                      /:/  /       \:\__\
+     \/__/                       \/__/         \/__/
+-->
+
+<body>
+    <!--Following div is for the entire login window-->
+    <div class="wholelogin" id="entirelogin">
+        <p id="login1" class="login">alexwatson </p>
+        <!--This div makes the spacing work, DO NOT TAKE OUT-->
+        <div>
+            <p id="login2" class="login">htmlgod4real </p>
+        </div>
+        <p class="loginClick">Login</p>
+        <!--Adaptive fail text below, by defauly invisible, changes div width when visible-->
+        <p id="loginfailtext" class="failtext"> </p>
+    </div>
+
+    <!--div for basically everything other than the login menu-->
+    <div id="everything" style="display:none">
+        <div class="topmenu">
+            <p id="profileClick" class="menuItem">Profile</p>
+            <p id="TerminalClick" class="menuItem">Terminal </p>
+        </div>
+
+        <!--For the window, by default invisible-->
+        <div id="wholewindow" class="window">
+            <div class="windowtop">
+                <p class="invert" id="windowtitle">o</p>
+                <p class="exitThing">X</p>
+            </div>
+            <!--Image div inside the window, by default even more invisible-->
+            <img alt="Windowed Picture" class="visual" style="display:none" src="https://pbs.twimg.com/profile_images/1396264752524013568/-uFxFvaQ_400x400.jpg">
+            <!--Below p tag is unused for images, set to ''-->
+            <iframe style="width:100%" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>/
+            <p id="windowstext"></p>
+        </div>
+
+
+        <!--Adds hidden audioplayer, never revealed so display: none unnecessary-->
+        <audio controls="" id="audioplayer" hidden=""></audio>
+
+
+        <!--div is for the history string and (active) line string of terminal-->
+        <div id="termtext">
+            <p id="history">'-</p>
+            <p id="line">&gt;</p>
+        </div>
+    </div>
+
+    <!--Below div is not inside any other div, totally alone; used for showing and hiding profile & keeping a placeholder '-' for the header-->
+    <div id="wholeprofile" style="display:none">
+        <!--Needed to keep everything below header-->
+        <p>-</p>
+
+        <!--div is needed for flex box centering to have it profile-like-->
+        <div id="flexprofile">
+            <div><img alt="Picture of Alex" class="dithered" src="https://i.ibb.co/48gyfbn/ditheredme.png"></div>
+            <!--Above is image, below is all of the text-->
+            <div>
+                <!--Note that all clickables have coolhover class, are named by id (name of link)-->
+                <p class="coolhover" id="profileAlex">Alexander K. Watson</p>
+                <p class="coolhover" id="linkedin" style="font-size: 1rem">*Career-oriented, determined, and professional*</p>
+                <!--Below is for spacing-->
+                <p>----------------------------------------</p>
+                <p>Analytical Skills </p>
+                <ul>
+                    <li id="school" class="coolhover">Academics (4.0 GPA)</li>
+                    <!--Unfortunately below is clickable anywhere even over subcategories...what can you do?-->
+                    <li id="gitlink" class="coolhover">Coding Experience (GITHUB)
+                        <ul>
+                            <li>HTML/CSS</li>
+                            <li>Javascript</li>
+                            <li>BASIC Derivatives</li>
+                            <li>Python</li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--Rest is basic HTML-->
+                <p>Conceptual Skills</p>
+                <ul>
+                    <li>Editor-in-Chief of School Newspaper</li>
+                </ul>
+                <p>Miscellaneous Interests</p>
+                <ul>
+                    <li>Botany</li>
+                    <li>Nutrition</li>
+                </ul>
+
+            </div>
+            <!--Above is end of div inside flexbox-->
+        </div>
+        <!--Above is end of flexbox div-->
+    </div>
+    <!--Above is end of entire profile div-->
+
+
+
+
+<script src="script.js"></script>
+</body></html>
