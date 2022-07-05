@@ -281,7 +281,7 @@ if (termstate === 'normal') {
       specialresult = '';
       break;
     case 'help':
-      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4\n"count": Gets the number of commands run since initial connection, even unknown commands\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like')
+      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4)\n"count": Gets the number of commands run since initial connection\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like')
       specialresult = ' (Window Result)'
       break;
       case 'sounds':
@@ -634,40 +634,40 @@ function quote() {
   rando = Math.floor(Math.random() * 12);
   switch(rando) {
       case 1:
-        quo = "q1\n-Amogus"
+        quo = '"The only true wisdom is in knowing you know nothing"\n-Socrates'
         break;
       case 2:
-        quo = "q2"
+        quo = '"Whenever you feel like criticizing any one...just remember that all the people in this world have not had the advantages that you have had"\n-F. Scott Fitzgerald, The Great Gatsby';
         break;
       case 3:
-        quo = "q3"
+        quo = '"The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown"\n-H.P. Lovecraft'
         break;
       case 4:
-        quo = "q4"
+        quo = '"I am not what happened to me, I am what I choose to become"\n-C.G. Jung'
         break;
       case 5:
-        quo = "q5"
+        quo = '"Never interrupt your enemy when he is making a mistake"\n-Napoleon Bonaparte'
         break;
       case 6:
-        quo = "q6"
+        quo = '"When tyranny becomes law, rebellion is a right"\n-Simon Bolivar'
         break;
       case 7:
-        quo = "q7"
+        quo = '"There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self"\n-Ernest Hemingway'
         break;
       case 8:
-        quo = "q8"
+        quo = '"You must stay drunk on writing so reality cannot destroy you"\n-Ray Bradbury'
         break;
       case 9:
-        quo = "q9"
+        quo = '"The art of being wise is knowing what to overlook"\n-William James'
         break;
       case 10:
-        quo = "q10"
+        quo = '"If you can change your mind, you can change your life"\n-William James'
         break;
       case 11:
-        quo = "q11"
+        quo = '"I am not afraid of an army of lions led by a sheep; I am afraid of an army of sheep led by a lion"\n-Alexander the Great'
         break;
       case 12:
-        quo = "q12"
+        quo = '"Freedom is something that dies unless it is used"\n-Hunter S. Thompson'
         break;
   }
   return quo;
