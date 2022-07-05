@@ -17,6 +17,8 @@
     --pop: #ececec;
     --back: #363636;
     --accent: #2132ed;
+    --fonto: 'VT323';
+    --sizo: 2rem;
 }
 
 
@@ -29,8 +31,8 @@ body {
     
     p {
     /* Font, size standard 2 rem, 0 margin probably unnecessary but what the hell */
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
+    font-family: var(--fonto);
+    font-size: var(--sizo);
     color: var(--pop);
     white-space: pre-wrap;
     margin: 0;
@@ -116,7 +118,7 @@ body {
     
     /* Fail text is small and also centered */
     .failtext {
-    font-size: 1rem;
+    font-size: var(--sizo)/2;
     text-align: center;
     }
     
@@ -140,8 +142,8 @@ body {
     
     /* Lists look consistent with the other style, non-inverted and normal size */
     li {
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
+    font-family: var(--fonto);
+    font-size: var(--sizo);;
     color: var(--pop);
     /* Square bullets instead of round ones */
     list-style-type: square;

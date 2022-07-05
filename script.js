@@ -86,33 +86,49 @@ if (termstate === 'normal') {
   //switch for entry; the first character of the entry is always > and so sliced off for convenience and ease of comprehension
   switch (entry.slice(1)) {
     case 'p0':
+      termset();
       colores('#ececec', '#363636', '#2132ed');
       $('.dithered').attr('src', 'assets/p0.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p1':
+        termset();
       colores('#ffe869', '#4a4a4a', '#242424');
       $('.dithered').attr('src', 'assets/p1.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p2':
-      colores('#83b07e', '#000000', '#d1d1d1');
-      $('.dithered').attr('src', 'assets/p2.png')
-      specialresult = ' (Palette Result)';
-      break;
+        termset();
+        colores('#83b07e', '#000000', '#d1d1d1');
+        $('.dithered').attr('src', 'assets/p2.png')
+        specialresult = ' (Palette Result)';
+        break;
 
       case 'p3':
+        termset();
       colores('#8bc8fe', '#051b2c', '#d1d1d1');
       $('.dithered').attr('src', 'assets/p3.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p4':
+        termset();
       colores('#edf6d6', '#3e232c', '#ff6666');
       $('.dithered').attr('src', 'assets/p4.png')
       specialresult = ' (Palette Result)';
+      break;
+
+      case 'modern':
+      var modo = document.querySelector(':root');
+      var bodo = document.querySelector('body')
+      //changes the font and rids bg image
+      modo.style.setProperty('--fonto', 'Lucida console');
+      bodo.style.setProperty('background-image', "url('assets/landscape.jpeg')");
+      modo.style.setProperty('--sizo', "1.4rem");
+      colores('#cf3c8a', '#edf6d6', '#ff6666');
+      $('.dithered').hide();
       break;
     //----------------background images----------------
     case 'walter':
@@ -163,14 +179,12 @@ if (termstate === 'normal') {
     //----------------images----------------
 
     case 'linkedup':
+      $('#wholewindow').css('width', '50%');
+      $('#wholewindow').css('margin-left', '-25%');
       windowSpawn('Pooh Shiesty Linked up with Spottemgotem', '');
       imageResult('assets/linkedup.jpg');
       break;
 
-    case 'sneed':
-      windowSpawn("Sneed's Feed and Seed", '');
-      imageResult('assets/sneed.jpg');
-      break;
     //----------------audio----------------
 
     case 'bruh':
@@ -673,6 +687,19 @@ function quote() {
   return quo;
 }
 
+//resets terminal to default blockmode
+function termset() {
+  var rcss = document.querySelector(':root');
+  var bcss = document.querySelector('body');
+  //changes the font and rids bg image
+  rcss.style.setProperty('--fonto', 'VT323');
+  bcss.style.setProperty('background-image', "");
+  rcss.style.setProperty('--sizo', "2rem");
+  $('.dithered').show();
+}
+
+
+
 //------------End of Input Functions----------------
 //     ___       __       __________   ___    .______       __    __   __       _______     _______.
 //    /   \     |  |     |   ____\  \ /  /    |   _  \     |  |  |  | |  |     |   ____|   /       |
@@ -837,7 +864,7 @@ $('.visual').toggle();
 //Function for changing css colors; arguments are (text color, background color, highlight color) (all new)
 function colores(textpal, bgpal, hlpal) {
   //makes root workable
-  var rcss = document.querySelector(':root');
+  var rcss = document.querySelector(':root'); 
   //changes each of the three colors
   rcss.style.setProperty('--pop', textpal);
   rcss.style.setProperty('--back', bgpal);
