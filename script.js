@@ -86,7 +86,7 @@ if (termstate === 'normal') {
   //switch for entry; the first character of the entry is always > and so sliced off for convenience and ease of comprehension
   switch (entry.slice(1)) {
     case 'p0':
-      colores('white', 'black', 'blue');
+      colores('#ececec', '#363636', '#75d6ff');
       $('.dithered').attr('src', 'https://i.ibb.co/48gyfbn/ditheredme.png')
       specialresult = ' (Palette Result)';
       break;
@@ -98,17 +98,17 @@ if (termstate === 'normal') {
       break;
 
       case 'p2':
-      colores('red', 'white', 'blue');
+      colores('#000000', '#83b07e', 'blue');
       specialresult = ' (Palette Result)';
       break;
 
       case 'p3':
-      colores('yellow', 'grey', 'black');
+      colores('#8bc8fe', '#051b2c', 'black');
       specialresult = ' (Palette Result)';
       break;
 
       case 'p4':
-      colores('grey', 'darkslategrey', 'darkgrey');
+      colores('#edf6d6', '#3e232c', 'darkgrey');
       specialresult = ' (Palette Result)';
       break;
     //----------------background images----------------
@@ -236,15 +236,51 @@ if (termstate === 'normal') {
       specialresult = ' (Int Result)\n' + commands;
       break;
     case 'clear-count':
-      specialresult = ' (Int Change)'
+      specialresult = ' (Int Change)';
       commands = 0;
       break;
     case 'about':
-      specialresult = "\nInteractive Terminal by Alex Watson; v3\nUse 'help' command for a brief list of important commands."
+      specialresult = "\nInteractive Terminal by Alex Watson; v3\nUse 'help' command for a brief list of important commands.";
       break;
     case 'quote':
-      specialresult = ' (Random Result)'
+      specialresult = ' (Random Result)\n' + quote();
       break;
+    case 'age':
+        specialresult = ' (Alex Result)\n17 y/o';
+        break;
+    case 'interests':
+      specialresult = ' (Alex Result)\nMath, Physics, Botany, Nutrition, Art';
+      break;
+    case 'name':
+      specialresult = ' (Alex Result)\nAlexander K Watson';
+      break;
+    case 'phone':
+      specialresult = ' (Alex Result)\n470-6925';
+      break;
+    case 'email':
+      specialresult = ' (Alex Result)\nalexwat1231@gmail.com';
+      break;
+      case 'color':
+        specialresult = ' (Alex Result)\nOlive Green';
+        break;
+      case 'movie':
+        specialresult = ' (Alex Result)\nTaxi Driver';
+        break;
+      case 'band':
+        specialresult = ' (Alex Result)\nDaft Punk';
+        break;
+      case 'book':
+        specialresult = ' (Alex Result)\nThe Great Gatsby';
+        break;
+        case 'show':
+          specialresult = ' (Alex Result)\nMr. Robot';
+          break;
+        case 'video-game':
+          specialresult = ' (Alex Result)\nDisco Elysium';
+          break;
+        case 'gpa':
+          specialresult = ' (Alex Result)\n4.0';
+          break;
     //----------------window results----------------
 
     case 'close':
@@ -252,7 +288,7 @@ if (termstate === 'normal') {
       specialresult = '';
       break;
     case 'help':
-      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4\n"count": Gets the number of commands run since initial connection, even unknown commands\n"clear-count": Clears the number returned by "count"\n')
+      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4\n"count": Gets the number of commands run since initial connection, even unknown commands\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like')
       specialresult = ' (Window Result)'
       break;
       case 'sounds':
@@ -264,7 +300,7 @@ if (termstate === 'normal') {
         specialresult = ' (Window Result)'
         break;
       case 'alex':
-        windowSpawn('Alex List!', '"linkedin", "age", "interests", "name", "phone", "email", "color", "movie", "band", "show", "book", "video-game"')
+        windowSpawn('Alex List!', '"linkedin", "age", "interests", "name", "phone", "email", "color", "movie", "band", "show", "book", "video-game", "gpa"')
         specialresult = ' (Window Result)'
         break;
     //----------------terminal states----------------
@@ -286,8 +322,9 @@ if (termstate === 'normal') {
 
     case 'profile':
       locked = 1;
-    $('#termtext').hide();
-    $('#wholeprofile').show();
+      $('#termtext').hide();
+      $('#wholeprofile').show();
+      specialresult = ' (Nav Result)';
     break;
 
     default:
@@ -597,7 +634,53 @@ if (event.key === 'Backspace' && entry.length > 1 && wait === 0) {
 entry = entry.slice(0, -1);
 line.textContent = entry;
 }
-}); //------------End of Input Functions----------------
+}); 
+
+//function for random quotes
+function quote() {
+  rando = Math.floor(Math.random() * 12);
+  switch(rando) {
+      case 1:
+        quo = "q1\n-Amogus"
+        break;
+      case 2:
+        quo = "q2"
+        break;
+      case 3:
+        quo = "q3"
+        break;
+      case 4:
+        quo = "q4"
+        break;
+      case 5:
+        quo = "q5"
+        break;
+      case 6:
+        quo = "q6"
+        break;
+      case 7:
+        quo = "q7"
+        break;
+      case 8:
+        quo = "q8"
+        break;
+      case 9:
+        quo = "q9"
+        break;
+      case 10:
+        quo = "q10"
+        break;
+      case 11:
+        quo = "q11"
+        break;
+      case 12:
+        quo = "q12"
+        break;
+  }
+  return quo;
+}
+
+//------------End of Input Functions----------------
 //     ___       __       __________   ___    .______       __    __   __       _______     _______.
 //    /   \     |  |     |   ____\  \ /  /    |   _  \     |  |  |  | |  |     |   ____|   /       |
 //   /  ^  \    |  |     |  |__   \  V  /     |  |_)  |    |  |  |  | |  |     |  |__     |   (----`
