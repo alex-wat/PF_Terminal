@@ -86,29 +86,32 @@ if (termstate === 'normal') {
   //switch for entry; the first character of the entry is always > and so sliced off for convenience and ease of comprehension
   switch (entry.slice(1)) {
     case 'p0':
-      colores('#ececec', '#363636', '#75d6ff');
-      $('.dithered').attr('src', 'https://i.ibb.co/48gyfbn/ditheredme.png')
+      colores('#ececec', '#363636', '#2132ed');
+      $('.dithered').attr('src', 'assets/p0.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p1':
       colores('#ffe869', '#4a4a4a', '#242424');
-      $('.dithered').attr('src', 'pal1.png')
+      $('.dithered').attr('src', 'assets/p1.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p2':
-      colores('#000000', '#83b07e', 'blue');
+      colores('#83b07e', '#000000', '#d1d1d1');
+      $('.dithered').attr('src', 'assets/p2.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p3':
-      colores('#8bc8fe', '#051b2c', 'black');
+      colores('#8bc8fe', '#051b2c', '#d1d1d1');
+      $('.dithered').attr('src', 'assets/p3.png')
       specialresult = ' (Palette Result)';
       break;
 
       case 'p4':
-      colores('#edf6d6', '#3e232c', 'darkgrey');
+      colores('#edf6d6', '#3e232c', '#ff6666');
+      $('.dithered').attr('src', 'assets/p4.png')
       specialresult = ' (Palette Result)';
       break;
     //----------------background images----------------
@@ -148,11 +151,6 @@ if (termstate === 'normal') {
       specialresult = ' (Link Result)';
       break;
 
-    case 'youtube':
-      window.open('https://www.youtube.com/channel/UCEB8-Xvi4UVA5ab1R2IBdyg/featured', '_blank').focus();
-      specialresult = ' (Link Result)';
-      break;
-
     case 'lightning':
       window.open('http://lightningcompendium.com/', '_blank').focus();
       specialresult = ' (Link Result)';
@@ -166,24 +164,19 @@ if (termstate === 'normal') {
 
     case 'linkedup':
       windowSpawn('Pooh Shiesty Linked up with Spottemgotem', '');
-      imageResult('https://pbs.twimg.com/media/EmmdAOFWEAM-e9o.jpg:large');
+      imageResult('assets/linkedup.jpg');
       break;
 
     case 'sneed':
       windowSpawn("Sneed's Feed and Seed", '');
-      imageResult('https://i.ytimg.com/vi/qeTw0c6vxO8/maxresdefault.jpg');
-      break;
-
-    case 'kill jester':
-      windowSpawn("You...can't kill jester!", '');
-      imageResult('https://i.ibb.co/NjPMR7r/kill-jester.png');
+      imageResult('assets/sneed.jpg');
       break;
     //----------------audio----------------
 
     case 'bruh':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/7gey25YFGIqLbQRCKq3H8Q8rbqs9lBIC';
+      audio.src = 'assets/bruh.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -191,7 +184,7 @@ if (termstate === 'normal') {
     case 'boom':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/qj8sNqnPPaMp3vSU1YCmCvnBW0rdy7eq';
+      audio.src = 'assets/boom.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -199,7 +192,7 @@ if (termstate === 'normal') {
     case 'classic':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/PwB0ydKupGxvbjagSD5zrEWRmZAs7kXF';
+      audio.src = 'assets/classic.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -207,7 +200,7 @@ if (termstate === 'normal') {
     case 'roasted':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/En9LibDknlsEi1tZ2fjheuTyeGshPIJ1';
+      audio.src = 'assets/roasted.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -215,7 +208,7 @@ if (termstate === 'normal') {
     case 'kitchen':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/rOCYhyy0a5ZaC8tkBgMgeWLPWyhfJMfb';
+      audio.src = 'assets/kitchen.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -223,7 +216,7 @@ if (termstate === 'normal') {
     case 'purge':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
-      audio.src = 'https://audio.jukehost.co.uk/bRPlE6qDdYdqrz0Lt6Xy3Lwi0isOzKMr';
+      audio.src = 'assets/purge.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -768,7 +761,7 @@ $(this).css('color', 'var(--pop)');
 
 $('#profileAlex').click(function () {
 windowSpawn('Picture of Alex', '');
-imageResult('https://i.ibb.co/ThgkDpn/alex-watson-1.jpg');
+imageResult('assets/alex_watson_1.jpg');
 }); //makes the 'coding' item clickable, taking you to linkedin
 
 $('#gitlink').click(function () {

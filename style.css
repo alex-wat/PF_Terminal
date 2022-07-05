@@ -14,9 +14,9 @@
 
 
 :root {
-    --pop: white;
-    --back: black;
-    --accent: blue;
+    --pop: #ececec;
+    --back: #363636;
+    --accent: #2132ed;
 }
 
 
