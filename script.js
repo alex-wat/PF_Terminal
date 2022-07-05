@@ -50,7 +50,11 @@ var dragOn = 0;
 var topStart = 50;
 var leftStart = 50; //Want the terminal to be locked when starting off in login; no typing and no entering
 
-var locked = 1; //.___________. _______ .______      .___  ___.  __  .__   __.      ___       __      
+var locked = 1;
+//used for the "count" command
+var commands = 0;
+
+//.___________. _______ .______      .___  ___.  __  .__   __.      ___       __      
 //|           ||   ____||   _  \     |   \/   | |  | |  \ |  |     /   \     |  |     
 //`---|  |----`|  |__   |  |_)  |    |  \  /  | |  | |   \|  |    /  ^  \    |  |     
 //    |  |     |   __|  |      /     |  |\/|  | |  | |  . `  |   /  /_\  \   |  |     
@@ -81,11 +85,32 @@ if (event.key === 'Enter' && locked === 0) {
 if (termstate === 'normal') {
   //switch for entry; the first character of the entry is always > and so sliced off for convenience and ease of comprehension
   switch (entry.slice(1)) {
-    //case 'black':
-    //document.body.style.backgroundImage = "";
-    //document.body.style.backgroundColor = 'black';
-    //specialresult = '';
-    //break;
+    case 'p0':
+      colores('white', 'black', 'blue');
+      $('.dithered').attr('src', 'https://i.ibb.co/48gyfbn/ditheredme.png')
+      specialresult = ' (Palette Result)';
+      break;
+
+      case 'p1':
+      colores('#ffe869', '#4a4a4a', '#242424');
+      $('.dithered').attr('src', 'pal1.png')
+      specialresult = ' (Palette Result)';
+      break;
+
+      case 'p2':
+      colores('red', 'white', 'blue');
+      specialresult = ' (Palette Result)';
+      break;
+
+      case 'p3':
+      colores('yellow', 'grey', 'black');
+      specialresult = ' (Palette Result)';
+      break;
+
+      case 'p4':
+      colores('grey', 'darkslategrey', 'darkgrey');
+      specialresult = ' (Palette Result)';
+      break;
     //----------------background images----------------
     case 'walter':
       document.body.style.backgroundImage = "url('https://www.indiewire.com/wp-content/uploads/2018/07/breakingbadformon_wide-22d0f0aa716956d518b391936d3bc323dd7a3848-s900-c85.jpg')";
@@ -207,17 +232,41 @@ if (termstate === 'normal') {
     case 'neat':
       specialresult = '\nI know right?';
       break;
-    //----------------window results----------------
-
-    case 'cool':
-      windowSpawn('nice window!', 'thank you');
-      specialresult = ' (Window Result)';
+    case 'count':
+      specialresult = ' (Int Result)\n' + commands;
       break;
+    case 'clear-count':
+      specialresult = ' (Int Change)'
+      commands = 0;
+      break;
+    case 'about':
+      specialresult = "\nInteractive Terminal by Alex Watson; v3\nUse 'help' command for a brief list of important commands."
+      break;
+    case 'quote':
+      specialresult = ' (Random Result)'
+      break;
+    //----------------window results----------------
 
     case 'close':
       $('.window').hide();
       specialresult = '';
       break;
+    case 'help':
+      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4\n"count": Gets the number of commands run since initial connection, even unknown commands\n"clear-count": Clears the number returned by "count"\n')
+      specialresult = ' (Window Result)'
+      break;
+      case 'sounds':
+        windowSpawn('Sound List', '"boom"\n"kitchen"\n"classic"\n"bruh"\n"roasted"\n"purge"')
+        specialresult = ' (Window Result)'
+        break;
+      case 'images':
+        windowSpawn('Image List', '"linkedup"\n"sneed"')
+        specialresult = ' (Window Result)'
+        break;
+      case 'alex':
+        windowSpawn('Alex List!', '"linkedin", "age", "interests", "name", "phone", "email", "color", "movie", "band", "show", "book", "video-game"')
+        specialresult = ' (Window Result)'
+        break;
     //----------------terminal states----------------
 
     case 'game':
@@ -235,14 +284,28 @@ if (termstate === 'normal') {
       specialresult = '\nContact Syntax:\n(emailaddress):::(message)\nFor Example:\nmyemail@gmail.com:::Hello Alex! I love your website!';
       break;
 
+    case 'profile':
+      locked = 1;
+    $('#termtext').hide();
+    $('#wholeprofile').show();
+    break;
+
     default:
       specialresult = ' (Unknown Command)';
       break;
   } //if terminal is not in normal configuration, but instead game
-
+  commands += 1;
 } else if (termstate === 'game') {
   switch (true) {
     //---------------------------------------game cases-----------------------------------------
+ // _______      ___      .___  ___.  _______ 
+ // /  _____|    /   \     |   \/   | |   ____|
+ //|  |  __     /  ^  \    |  \  /  | |  |__   
+ //|  | |_ |   /  /_\  \   |  |\/|  | |   __|  
+ //|  |__| |  /  _____  \  |  |  |  | |  |____ 
+ // \______| /__/     \__\ |__|  |__| |_______|
+                                             
+ 
     case entry.slice(1) === 'terminal':
       specialresult = '\nMain Terminal Activated';
       termstate = 'normal';
@@ -453,7 +516,7 @@ if (termstate === 'normal') {
       specialresult = '\nI do not understand';
       break;
   } //if gamepart has been set to end for an ending, exit game
-
+  commands += 1;
 
   if (gamepart === 'end') {
     gamepart = 0;
@@ -541,6 +604,8 @@ line.textContent = entry;
 //  /  /_\  \   |  |     |   __|   >   <      |      /     |  |  |  | |  |     |   __|     \   \    
 // /  _____  \  |  `----.|  |____ /  .  \     |  |\  \----.|  `--'  | |  `----.|  |____.----)   |   
 ///__/     \__\ |_______||_______/__/ \__\    | _| `._____| \______/  |_______||_______|_______/    
+
+
 //------------Clicking Functions followed by Hovering Functions----------------
 //makes the vars for the "login" credentials, individual variables for getting unique failure texts
 
@@ -550,32 +615,32 @@ var cred2 = 0; //credentials are blue when hovered, white when hovered out
 
 $('#login1').hover(function () {
 if (cred1 === 0) {
-$(this).css('color', 'blue');
+$(this).css('color', 'var(--accent)');
 }
 }, function () {
 if (cred1 === 0) {
-$(this).css('color', 'white');
+$(this).css('color', 'var(--pop)');
 }
 });
 $('#login2').hover(function () {
 if (cred2 === 0) {
-$(this).css('color', 'blue');
+$(this).css('color', 'var(--accent)');
 }
 }, function () {
 if (cred2 === 0) {
-$(this).css('color', 'white');
+$(this).css('color', 'var(--pop)');
 }
 }); //credentials turn black if you click them, and change the variable for hovering and login validation
 
 $('#login1').click(function () {
-$('#login1').css('color', 'black');
+$('#login1').css('color', 'var(--back)');
 cred1 = 1;
 });
 $('#login2').click(function () {
-$('#login2').css('color', 'black');
+$('#login2').css('color', 'var(--back)');
 $('#login2').text('************   ');
 cred2 = 1;
-}); //clicking the logjn button, it works if both credentials have the correct variables
+}); //clicking the login button, it works if both credentials have the correct variables
 
 $('.loginClick').click(function () {
 var failtext = document.getElementById('loginfailtext');
@@ -595,9 +660,9 @@ failtext.textContent = '(incorrect username and password)';
 }); //highlights menu items such as Terminal and Profile; can't use .coolhover because they are inverted colors
 
 $('.menuItem').hover(function () {
-$(this).css('color', 'blue');
+$(this).css('color', 'var(--accent)');
 }, function () {
-$(this).css('color', 'black');
+$(this).css('color', 'var(--back)');
 }); //makes the profile header clickable; locks and hides the terminal, displays the profile
 
 $('#profileClick').click(function () {
@@ -613,9 +678,9 @@ $('#termtext').show();
 }); //coolhover makes it so that the text turns blue if hovered over, but goes back to white if the mouse stops hovering
 
 $('.coolhover').hover(function () {
-$(this).css('color', 'blue');
+$(this).css('color', 'var(--accent)');
 }, function () {
-$(this).css('color', 'white');
+$(this).css('color', 'var(--pop)');
 }); //makes my name clickable, spawning a window of a picture of me
 
 $('#profileAlex').click(function () {
@@ -691,9 +756,20 @@ function imageResult(visarg) {
 specialresult = ' (Image Result)';
 $('.visual').attr('src', visarg);
 $('.visual').toggle();
-} //If you click the X on a window, hide the window
+}
+
+//Function for changing css colors; arguments are (text color, background color, highlight color) (all new)
+function colores(textpal, bgpal, hlpal) {
+  //makes root workable
+  var rcss = document.querySelector(':root');
+  //changes each of the three colors
+  rcss.style.setProperty('--pop', textpal);
+  rcss.style.setProperty('--back', bgpal);
+  rcss.style.setProperty('--accent', hlpal);
+}
 
 
+ //If you click the X on a window, hide the window
 $(".exitThing").click(function () {
 $('.window').hide(); //Below code is NECESSARY in case they open a window with no image right after
 

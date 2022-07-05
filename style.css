@@ -13,10 +13,16 @@
 */
 
 
+:root {
+    --pop: white;
+    --back: black;
+    --accent: blue;
+}
+
 
 body {
     /* Black background, other two are for image changing */
-    background-color: #36302f;
+    background-color: var(--back);
     background-repeat: no-repeat;
     background-size: cover;
     }
@@ -25,7 +31,7 @@ body {
     /* Font, size standard 2 rem, 0 margin probably unnecessary but what the hell */
     font-family: 'VT323', monospace;
     font-size: 2rem;
-    color: white;
+    color: var(--pop);
     white-space: pre-wrap;
     margin: 0;
     }
@@ -39,7 +45,7 @@ body {
     /* Position of header (with profile and terminal options) is fixed, covers the screen, and flexes for the two words */
     .topmenu {
     position: fixed;
-    background-color: white;
+    background-color: var(--pop);
     width: 100%;
     margin: 0px;
     display: flex;
@@ -48,20 +54,18 @@ body {
     
     /* Text standard is white text on black bg, this is for black text on white bg (such as header) */
     .invert {
-    color: black;
+    color: var(--back);
     }
     
     /* For opened windows; top and left make it centered; not sure why margin-top and margin-left are here, but it works so I'm not changing it (z-index is to make it in front of everything else) */
     .window {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    border: solid 5px white;
-    background-color: black;
+    border: solid 5px var(--pop);
+    background-color: var(--back);
     z-index: 5;
     margin-top: -10%;
-    margin-left: -20%;
-    width: 40%;
+    margin-left: -35%;
+    width: 70%;
     display: none;
     }
     
@@ -71,19 +75,19 @@ body {
     justify-content: space-between;
     margin: -1px;
     padding: 4px;
-    background-color: white;
+    background-color: var(--pop);
     cursor: all-scroll;
     }
     
     /* Exit 'X' on the top of windows is inverted and clickable */
     .exitThing {
-    color: black;
+    color: var(--back);
     cursor: pointer;
     }
     
     /* Login clickable autofills are white and not close to each other, also clearly clickable */
     .login {
-    background-color: white;
+    background-color: var(--pop);
     margin: 12px;
     cursor: pointer;
     }
@@ -102,7 +106,7 @@ body {
     /* width is 30%, leaving 70%, half of which is 35% */
     top: 35%;
     left: 35%;
-    border: white solid 2px;
+    border: var(--pop) solid 2px;
     /* Can't be copied, verbose due to compatibility to multiple platforms */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -118,7 +122,7 @@ body {
     
     /* Menu items inside header (profile, terminal) are inverted and far from each other, also clearly clickable */
     .menuItem {
-    color: black;
+    color: var(--back);
     margin-right: 40px;
     cursor: pointer;
     }
@@ -138,7 +142,7 @@ body {
     li {
     font-family: 'VT323', monospace;
     font-size: 2rem;
-    color: white;
+    color: var(--pop);
     /* Square bullets instead of round ones */
     list-style-type: square;
     }
