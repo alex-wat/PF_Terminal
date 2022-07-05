@@ -1,6 +1,6 @@
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */
+/*! jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license lmao*/
 !function (e, t) {
 "use strict";
 
