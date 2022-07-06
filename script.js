@@ -269,6 +269,48 @@ if (termstate === 'normal') {
       audio.play();
       specialresult = ' (Audio Result)';
       break;
+    case 'bell':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/bell.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'bonk':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/bonk.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'fart':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/fart.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'nokia':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/nokia.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'sus':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/sus.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'wifi':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/wifi.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
     //----------------text results----------------
 
     case 'neat':
@@ -394,7 +436,7 @@ if (termstate === 'normal') {
       case 'sounds':
         $('#wholewindow').css('width', '50%');
       $('#wholewindow').css('margin-left', '-25%');
-        windowSpawn('Sound List', '"boom"\n"kitchen"\n"classic"\n"bruh"\n"roasted"\n"purge"\n"secret"')
+        windowSpawn('Sound List', '"boom"\n"kitchen"\n"classic"\n"bruh"\n"roasted"\n"purge"\n"bell"\n"bonk"\n"sus"\n"nokia"\n"wifi"\n"secret"')
         specialresult = ' (Window Result)'
         break;
       case 'images':
