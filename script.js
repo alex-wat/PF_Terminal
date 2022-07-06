@@ -12,47 +12,63 @@
 //     \/__/         \/__/         \|__|                                            
 
 //Entry default is a right-facing carrot
-var entry = ">"; //Establishing variables needed for the history splash to work (ip & date)
+var entry = ">"; 
 
+
+//Establishing variables needed for the history splash to work (ip & date)
 var baseconnect = '';
-var today = new Date(); //Not even sure if below does anything, but I tried it to help something and later it worked so I'm not taking it out
+var today = new Date();
 
+
+//Not even sure if below does anything, but I tried it to help something and later it worked so I'm not taking it out
 $.ajaxSetup({
 "async": false
-}); //Below gets IP and adds it and date into history by default
+});
 
+//Below gets IP and adds it and date into history by default
 $.getJSON("https://api.ipify.org/?format=json", function (data) {
 baseconnect = data.ip;
 $("#history").html('-\nConnection obtained from ' + baseconnect + ' at ' + today);
-}); //gets the permanently used historesplash, which comes back even when cleared by what it is now, after reset
+});
 
-var historesplash = $("#history").html(); //actual histore (which can be changed, unpermanent) is now based off the permanent
+//gets the permanently used historesplash, which comes back even when cleared by what it is now, after reset
+var historesplash = $("#history").html();
 
-var histore = historesplash; //visresult, the image used in windowed, is a workable variable
+//actual histore (which can be changed, unpermanent) is now based off the permanent
+var histore = historesplash;
 
-var visresult = new Image(); //by default you aren't waiting (not even used anymore but I'll keep it in case)
+//visresult, the image used in windowed, is a workable variable
+var visresult = new Image();
 
-var wait = 0; //specialresult is the immediate text result added onto the history string, by default nothing or else it would not be good
+//by default you aren't waiting (not even used anymore but I'll keep it in case)
+var wait = 0;
 
-var specialresult = ''; //terminal is not in alternative states (such as game or contact)
+//specialresult is the immediate text result added onto the history string, by default nothing or else it would not be good
+var specialresult = '';
 
-var termstate = 'normal'; //Below are all variables needed for the game state; gamepart is basically 'room' of the game and gameclass is mage, knight, thief
+//terminal is not in alternative states (such as game or contact)
+var termstate = 'normal';
 
+//Below are all variables needed for the game state; gamepart is basically 'room' of the game and gameclass is mage, knight, thief
 var gamepart = 0;
-var gameclass = 'none'; //below are game items
+var gameclass = 'none';
 
+//below are game items
 var torch = 0;
 var shield = 0;
 var trolled = 0;
-var key = 0; //Variables necessary for being able to drag the window
+var key = 0; 
 
+//Variables necessary for being able to drag the window
 var dragOn = 0;
 var topStart = 50;
-var leftStart = 50; //Want the terminal to be locked when starting off in login; no typing and no entering
-
+var leftStart = 50; 
+//Want the terminal to be locked when starting off in login; no typing and no entering
 var locked = 1;
+
 //used for the "count" command
 var commands = 0;
+
 //used for 'last' command
 var last = '';
 
@@ -63,22 +79,26 @@ var last = '';
 //    |  |     |  |____ |  |\  \----.|  |  |  | |  | |  |\   |  /  _____  \  |  `----.
 //    |__|     |_______|| _| `._____||__|  |__| |__| |__| \__| /__/     \__\ |_______|
 //------------Input Functions----------------
-//Occurs whenever you hit a button
 
+//Occurs whenever you hit a button
 document.addEventListener('keypress', function (event) {
+
 //Makes the history and line strings editable or get-able
 var line = document.getElementById("line");
-var history = document.getElementById("history"); //If you hit a key (that's not enter (so a letter)) and the terminal is available, then add that letter to the line string
+var history = document.getElementById("history");
 
+//If you hit a key (that's not enter (so a letter)) and the terminal is available, then add that letter to the line string
 if (event.key !== 'Enter' && wait !== 1 && locked === 0) {
-entry = entry + event.key; //Hitting a key puts the command line into view for accessibility
+entry = entry + event.key;
 
+//Hitting a key puts the command line into view for accessibility
 document.getElementById('line').scrollIntoView();
-} //Immediately makes the value of the string the content of the active command line
+}
 
+//Immediately makes the value of the string the content of the active command line
+line.textContent = entry;
 
-line.textContent = entry; //If you pressed enter and you're not locked from terminal
-
+//If you pressed enter and you're not locked from terminal
 if (event.key === 'Enter' && locked === 0) {
 //--------Put all commands like this:---------
 //case 'nameofcommand': (stuff) break;
@@ -710,19 +730,22 @@ if (wait === 0) {
   entry = ">";
 } else {
   entry = "...";
-} //Updates the command line string
+} 
 
+//Updates the command line string
+line.textContent = entry;
 
-line.textContent = entry; //hitting enter will always scroll the command line into view
-
+//hitting enter will always scroll the command line into view
 document.getElementById('line').scrollIntoView();
 }
-}); //If you hit ANY key (yeah, I know it's pretty inefficient but it works)
+});
 
+//If you hit ANY key (yeah, I know it's pretty inefficient but it works)
 document.addEventListener('keydown', function (event) {
 //Makes the line workable
-var line = document.getElementById("line"); //If the key was backspace, then you slice the last character from the active command line string
+var line = document.getElementById("line"); 
 
+//If the key was backspace, then you slice the last character from the active command line string
 if (event.key === 'Backspace' && entry.length > 1 && wait === 0) {
 entry = entry.slice(0, -1);
 line.textContent = entry;
@@ -799,9 +822,9 @@ function termset() {
 //makes the vars for the "login" credentials, individual variables for getting unique failure texts
 
 var cred1 = 0;
-var cred2 = 0; //credentials are blue when hovered, white when hovered out
+var cred2 = 0; 
+//credentials are blue when hovered, white when hovered out
 //note that you can't just use .coolhover because they need to stay black if you click them
-
 $('#login1').hover(function () {
 if (cred1 === 0) {
 $(this).css('color', 'var(--accent)');
@@ -819,8 +842,9 @@ $(this).css('color', 'var(--accent)');
 if (cred2 === 0) {
 $(this).css('color', 'var(--pop)');
 }
-}); //credentials turn black if you click them, and change the variable for hovering and login validation
+});
 
+//credentials turn black if you click them, and change the variable for hovering and login validation
 $('#login1').click(function () {
 $('#login1').css('color', 'var(--back)');
 cred1 = 1;
@@ -829,8 +853,9 @@ $('#login2').click(function () {
 $('#login2').css('color', 'var(--back)');
 $('#login2').text('************   ');
 cred2 = 1;
-}); //clicking the login button, it works if both credentials have the correct variables
+}); 
 
+//clicking the login button, it works if both credentials have the correct variables
 $('.loginClick').click(function () {
 var failtext = document.getElementById('loginfailtext');
 
@@ -838,7 +863,8 @@ if (cred1 === 1 && cred2 === 1) {
 $('.wholelogin').hide();
 $('#everything').show();
 today = new Date();
-locked = 0; //unique failure codes for each combination
+locked = 0; 
+//unique failure codes for each combination
 } else if (cred1 === 1 && cred2 === 0) {
 failtext.textContent = '(incorrect password)';
 } else if (cred1 === 0 && cred2 === 1) {
@@ -846,45 +872,53 @@ failtext.textContent = '(incorrect username)';
 } else if (cred1 === 0 && cred2 === 0) {
 failtext.textContent = '(incorrect username and password)';
 }
-}); //highlights menu items such as Terminal and Profile; can't use .coolhover because they are inverted colors
+});
 
+//highlights menu items such as Terminal and Profile; can't use .coolhover because they are inverted colors
 $('.menuItem').hover(function () {
 $(this).css('color', 'var(--accent)');
 }, function () {
 $(this).css('color', 'var(--back)');
-}); //makes the profile header clickable; locks and hides the terminal, displays the profile
+});
 
+//makes the profile header clickable; locks and hides the terminal, displays the profile
 $('#profileClick').click(function () {
 locked = 1;
 $('#termtext').hide();
 $('#wholeprofile').show();
-}); //makes the terminal header clickable; unlocks and shows the terminal, hides the profile
+});
 
+//makes the terminal header clickable; unlocks and shows the terminal, hides the profile
 $('#TerminalClick').click(function () {
 locked = 0;
 $('#wholeprofile').hide();
 $('#termtext').show();
-}); //coolhover makes it so that the text turns blue if hovered over, but goes back to white if the mouse stops hovering
+});
 
+//coolhover makes it so that the text turns blue if hovered over, but goes back to white if the mouse stops hovering
 $('.coolhover').hover(function () {
 $(this).css('color', 'var(--accent)');
 }, function () {
 $(this).css('color', 'var(--pop)');
-}); //makes my name clickable, spawning a window of a picture of me
+});
 
+//makes my name clickable, spawning a window of a picture of me
 $('#profileAlex').click(function () {
 windowSpawn('Picture of Alex', '');
 imageResult('assets/alex_watson_1.jpg');
-}); //makes the 'coding' item clickable, taking you to linkedin
+});
 
+//makes the 'coding' item clickable, taking you to linkedin
 $('#gitlink').click(function () {
 window.open('https://github.com/alex-wat', '_blank').focus();
-}); //makes the thing under my name clickable, taking you to github 
+});
 
+//makes the thing under my name clickable, taking you to github 
 $('#linkedin').click(function () {
 window.open('https://www.linkedin.com/in/alex-watson-971530242/', '_blank').focus();
-}); //makes the academics item clickable, taking you to sig's website
+});
 
+//makes the academics item clickable, taking you to sig's website
 $('#school').click(function () {
 window.open('https://www.signature.edu/', '_blank').focus();
 }); //------------End of Clicking Functions followed by Hovering Functions----------------
@@ -896,8 +930,8 @@ window.open('https://www.signature.edu/', '_blank').focus();
 //    \__/     \______/      |__|     |_______|   |__|      \______/  | _| `._____|   |__|  |__| |_______|
 //------------User Input Functions----------------
 //-----------DRAG-----------LOGIC-----------NOW-----------
-//just sets the variables, not really important specifically what they are, they are overwritten a lot
 
+//just sets the variables, not really important specifically what they are, they are overwritten a lot
 var xMs = 0;
 var yMs = 0; //for starting the drag
 
@@ -905,12 +939,13 @@ function windowDragStart(e) {
 //the position of the mouse in terms of both axes are recieved in pixels...
 //...then compared against the total pixel measures to convert them into percent
 xMs = e.clientX / $(document).width() * 100;
-yMs = e.clientY / $(document).width() * 100; //other functions know that dragging is happening
-
+yMs = e.clientY / $(document).width() * 100; 
+//other functions know that dragging is happening
 dragOn = 1;
-} //when you move the mouse AT ALL (yeah I know it's inefficient, sorry ¯\_(ツ)_/¯)
+}
 
 
+//when you move the mouse AT ALL (yeah I know it's inefficient, sorry ¯\_(ツ)_/¯)
 function windowDragOn(e) {
 //if you're actually dragging, changed from windowDragStart (last line)
 if (dragOn === 1) {
@@ -919,28 +954,34 @@ event.preventDefault(); //calculate the change in each axis by taking the prior 
 //current positions calculated in percent the same way as prior, see that for more info
 
 var changeX = e.clientX / $(document).width() * 100 - xMs;
-var changeY = e.clientY / $(document).width() * 100 - yMs; //reads the current position of the window as a NUMBER, taking off the % at the end of each measurement for an integer 
+var changeY = e.clientY / $(document).width() * 100 - yMs;
+//reads the current position of the window as a NUMBER, taking off the % at the end of each measurement for an integer 
 
 var readX = Number(document.getElementById('wholewindow').style.left.slice(0, -1));
-var readY = Number(document.getElementById('wholewindow').style.top.slice(0, -1)); //adds the change in mouse movement and the current position of window to get the new position of the window
+var readY = Number(document.getElementById('wholewindow').style.top.slice(0, -1)); 
+
+
+//adds the change in mouse movement and the current position of window to get the new position of the window
 //pretty neat how that works, huh? I thought of it myself :)
-
 document.getElementById('wholewindow').style.left = changeX * 1 + readX + "%";
-document.getElementById('wholewindow').style.top = 2 * changeY + readY + "%"; //makes the prior coordinates the 'now' positions
-//took me forever to figure out that you had to do this :(
+document.getElementById('wholewindow').style.top = 2 * changeY + readY + "%";
 
+
+//makes the prior coordinates the 'now' positions
+//took me forever to figure out that you had to do this :(
 xMs = e.clientX / $(document).width() * 100;
 yMs = e.clientY / $(document).width() * 100;
 }
-} //end dragging, occurs when releases mouse while dragging
+} 
 
-
+//end dragging, occurs when releases mouse while dragging
 function windowDragEnd() {
 //simple changing of a var for windowDragOn()
 dragOn = 0;
-} //Used whenever spawning images, argument is link of image
+} 
 
 
+//Used whenever spawning images, argument is link of image
 function imageResult(visarg) {
 specialresult = ' (Image Result)';
 $('.visual').attr('src', visarg);
@@ -963,30 +1004,36 @@ $(".exitThing").click(function () {
 $('.window').hide(); //Below code is NECESSARY in case they open a window with no image right after
 
 $('.visual').hide();
-}); //Used in window commands, spawns a window with appropriate parameters
+});
 
+//Used in window commands, spawns a window with appropriate parameters
 function windowSpawn(title, content) {
 //hides image by default
-$('.visual').hide(); //below makes elements workable and then works then
+$('.visual').hide();
 
+//below makes elements workable and then works then
 var titleElement = document.getElementById("windowtitle");
 var contentElement = document.getElementById("windowstext");
 titleElement.textContent = title;
-contentElement.textContent = content; //shows the window, finally
+contentElement.textContent = content;
+//shows the window, finally
+$('.window').show();
 
-$('.window').show(); //Re-centers the window if it was opened, moved, closed, and then opened again
-
+//Re-centers the window if it was opened, moved, closed, and then opened again
 document.getElementById('wholewindow').style.top = '50%';
 document.getElementById('wholewindow').style.left = '50%';
-} //Allows the window to be workable
+}
 
+//Allows the window to be workable
+var windower = document.querySelector("#wholewindow");
 
-var windower = document.querySelector("#wholewindow"); //when the mouse is pusehd down, start the drag
+//when the mouse is pusehd down, start the drag
+windower.addEventListener('mousedown', windowDragStart);
 
-windower.addEventListener('mousedown', windowDragStart); //when the mouse is released, end the drag
+//when the mouse is released, end the drag
+windower.addEventListener('mouseup', windowDragEnd);
 
-windower.addEventListener('mouseup', windowDragEnd); //if you MOVE THE MOUSE then do the actual dragging
-
+//if you MOVE THE MOUSE then do the actual dragging
 addEventListener('mousemove', windowDragOn); //------------End of User Input Functions----------------
 //.__   __.  ___________    ____  _______ .______           _______  __  ____    ____  _______     __    __  .______   
 //|  \ |  | |   ____\   \  /   / |   ____||   _  \         /  _____||  | \   \  /   / |   ____|   |  |  |  | |   _  \  
