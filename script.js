@@ -203,6 +203,10 @@ if (termstate === 'normal') {
       window.open('https://morb.in/', '_blank').focus();
       specialresult = ' (Link Result)';
       break;
+    case 'skill':
+      window.open('assets/skill.html', '_blank').focus();
+      specialresult = ' (Link Result)';
+      break;
     //----------------audio----------------
     case 'bruh':
       var audio = document.getElementById("audioplayer");

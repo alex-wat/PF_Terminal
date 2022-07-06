@@ -1,0 +1,88 @@
+<!DOCTYPE html> <html><head>
+        <title>Skill Calculation</title>
+    <style>* {
+    font-family: 'lucida console';
+    color: #87ff8d;
+    text-align: center;
+}
+
+.darker {
+    color: #292929;
+}
+
+h1 {
+    
+}
+
+h2 {
+    
+}
+
+p {
+    
+}
+
+body {
+    background-color: #292929;
+}</style></head>
+    <body>
+        <h1>Real Life Experience Calculator</h1>
+        <p>(This project uses a realistic logarithmic function to simulate actual learning!)</p>
+        <br><br>
+        <h2>What is the name of the skill you wish to learn?</h2>
+        <input id="skillName" type="text" class="darker">
+        <br><br><br><br>
+        <h2>How many hours per week will you practice this skill?</h2>
+        <input id="hoursPerWeek" type="number" class="darker">
+        <br><br><br><br>
+        <h2>I have access to the following:</h2>
+        <input type="checkbox" id="docu">
+        <label for="documentation">Accurate documentation regarding the skill</label>
+        <br>
+        <input type="checkbox" id="mentor">
+        <label for="mentor">An experiened mentor who will help me learn the skill</label>
+        <br><br><br><br>
+        <h2>Date of Prediction</h2>
+        <input id="endMonth" type="datetime-local" class="darker"><br><br>
+        <input id="finCalc" type="submit" onclick="skillCalc()" class="darker">
+        <br>
+        <br>
+        <p id="end"></p>
+    
+
+<script>
+/*__POPCODESTART__*/
+var end = document.getElementById("end");
+var nowDate = new Date();
+var doc = 0;
+var mentor = 0;
+
+function skillCalc() {
+  if (document.getElementById('docu').checked === true) {
+    doc = .3;
+  } else {
+    doc = 0;
+  }
+
+  if (document.getElementById('mentor').checked === true) {
+    mentor = .3;
+  } else {
+    mentor = 0;
+  }
+
+  var xp = document.getElementById('hoursPerWeek').value * dateCalc(nowDate.getTime(), document.getElementById('endMonth').valueAsNumber) * (.4 + mentor + doc);
+  var percent = 1 + 13.6 * Math.log(xp);
+
+  if (percent > 100) {
+    percent = 100;
+  }
+
+  end.textContent = 'You will have level ' + Math.round(percent) + '% ' + document.getElementById('skillName').value + ' by the time provided.';
+}
+
+function dateCalc(dt1, dt2) {
+  var difference = (dt2 - dt1) / 1000;
+  difference /= 60 * 60 * 24 * 7;
+  return Math.abs(difference);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBvcGNvZGVQcmV2aWV3LmpzIl0sIm5hbWVzIjpbImVuZCIsImRvY3VtZW50IiwiZ2V0RWxlbWVudEJ5SWQiLCJub3dEYXRlIiwiRGF0ZSIsImRvYyIsIm1lbnRvciIsInNraWxsQ2FsYyIsImNoZWNrZWQiLCJ4cCIsInZhbHVlIiwiZGF0ZUNhbGMiLCJnZXRUaW1lIiwidmFsdWVBc051bWJlciIsInBlcmNlbnQiLCJNYXRoIiwibG9nIiwidGV4dENvbnRlbnQiLCJyb3VuZCIsImR0MSIsImR0MiIsImRpZmZlcmVuY2UiLCJhYnMiXSwibWFwcGluZ3MiOiJBQUFBLElBQU1BLEdBQUcsR0FBR0MsUUFBUSxDQUFDQyxjQUFULENBQXdCLEtBQXhCLENBQVo7QUFDQSxJQUFNQyxPQUFPLEdBQUcsSUFBSUMsSUFBSixFQUFoQjtBQUNBLElBQUlDLEdBQUcsR0FBRyxDQUFWO0FBQ0EsSUFBSUMsTUFBTSxHQUFHLENBQWI7O0FBR0EsU0FBU0MsU0FBVCxHQUFxQjtBQUNqQixNQUFJTixRQUFRLENBQUNDLGNBQVQsQ0FBd0IsTUFBeEIsRUFBZ0NNLE9BQWhDLEtBQTRDLElBQWhELEVBQXNEO0FBQ2xESCxJQUFBQSxHQUFHLEdBQUcsRUFBTjtBQUNILEdBRkQsTUFFTztBQUFDQSxJQUFBQSxHQUFHLEdBQUcsQ0FBTjtBQUFTOztBQUVqQixNQUFJSixRQUFRLENBQUNDLGNBQVQsQ0FBd0IsUUFBeEIsRUFBa0NNLE9BQWxDLEtBQThDLElBQWxELEVBQXdEO0FBQ3BERixJQUFBQSxNQUFNLEdBQUcsRUFBVDtBQUNILEdBRkQsTUFFTztBQUFDQSxJQUFBQSxNQUFNLEdBQUcsQ0FBVDtBQUFZOztBQUVwQixNQUFJRyxFQUFFLEdBQUdSLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixjQUF4QixFQUF3Q1EsS0FBeEMsR0FBaURDLFFBQVEsQ0FBQ1IsT0FBTyxDQUFDUyxPQUFSLEVBQUQsRUFBb0JYLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixVQUF4QixFQUFvQ1csYUFBeEQsQ0FBekQsSUFBb0ksS0FBS1AsTUFBTCxHQUFjRCxHQUFsSixDQUFUO0FBQ0EsTUFBSVMsT0FBTyxHQUFHLElBQUssT0FBT0MsSUFBSSxDQUFDQyxHQUFMLENBQVNQLEVBQVQsQ0FBMUI7O0FBQ0EsTUFBSUssT0FBTyxHQUFDLEdBQVosRUFBaUI7QUFDYkEsSUFBQUEsT0FBTyxHQUFDLEdBQVI7QUFDSDs7QUFDRGQsRUFBQUEsR0FBRyxDQUFDaUIsV0FBSixHQUFrQix5QkFBeUJGLElBQUksQ0FBQ0csS0FBTCxDQUFXSixPQUFYLENBQXpCLEdBQStDLElBQS9DLEdBQXNEYixRQUFRLENBQUNDLGNBQVQsQ0FBd0IsV0FBeEIsRUFBcUNRLEtBQTNGLEdBQW1HLHdCQUFySDtBQUNIOztBQUVELFNBQVNDLFFBQVQsQ0FBa0JRLEdBQWxCLEVBQXVCQyxHQUF2QixFQUE0QjtBQUN4QixNQUFJQyxVQUFVLEdBQUcsQ0FBQ0QsR0FBRyxHQUFHRCxHQUFQLElBQWEsSUFBOUI7QUFDQUUsRUFBQUEsVUFBVSxJQUFLLEtBQUssRUFBTCxHQUFVLEVBQVYsR0FBZSxDQUE5QjtBQUNBLFNBQVFOLElBQUksQ0FBQ08sR0FBTCxDQUFTRCxVQUFULENBQVI7QUFDSCIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IGVuZCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZW5kXCIpO1xuY29uc3Qgbm93RGF0ZSA9IG5ldyBEYXRlKCk7XG52YXIgZG9jID0gMDtcbnZhciBtZW50b3IgPSAwO1xuXG5cbmZ1bmN0aW9uIHNraWxsQ2FsYygpIHtcbiAgICBpZiAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2RvY3UnKS5jaGVja2VkID09PSB0cnVlKSB7XG4gICAgICAgIGRvYyA9IC4zO1xuICAgIH0gZWxzZSB7ZG9jID0gMDt9XG4gICAgXG4gICAgaWYgKGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtZW50b3InKS5jaGVja2VkID09PSB0cnVlKSB7XG4gICAgICAgIG1lbnRvciA9IC4zO1xuICAgIH0gZWxzZSB7bWVudG9yID0gMDt9XG4gICAgXG4gICAgbGV0IHhwID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2hvdXJzUGVyV2VlaycpLnZhbHVlICogKGRhdGVDYWxjKG5vd0RhdGUuZ2V0VGltZSgpLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZW5kTW9udGgnKS52YWx1ZUFzTnVtYmVyKSkgKiAoLjQgKyBtZW50b3IgKyBkb2MpO1xuICAgIGxldCBwZXJjZW50ID0gMSArICgxMy42ICogTWF0aC5sb2coeHApKTtcbiAgICBpZiAocGVyY2VudD4xMDApIHtcbiAgICAgICAgcGVyY2VudD0xMDA7XG4gICAgfVxuICAgIGVuZC50ZXh0Q29udGVudCA9ICdZb3Ugd2lsbCBoYXZlIGxldmVsICcgKyBNYXRoLnJvdW5kKHBlcmNlbnQpICsgJyUgJyArIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdza2lsbE5hbWUnKS52YWx1ZSArICcgYnkgdGhlIHRpbWUgcHJvdmlkZWQuJztcbn1cblxuZnVuY3Rpb24gZGF0ZUNhbGMoZHQxLCBkdDIpIHtcbiAgICB2YXIgZGlmZmVyZW5jZSA9IChkdDIgLSBkdDEpLyAxMDAwO1xuICAgIGRpZmZlcmVuY2UgLz0gKDYwICogNjAgKiAyNCAqIDcpO1xuICAgIHJldHVybiAoTWF0aC5hYnMoZGlmZmVyZW5jZSkpO1xufSJdfQ==</script></body></html>
