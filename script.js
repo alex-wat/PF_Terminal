@@ -415,6 +415,12 @@ if (termstate === 'normal') {
         windowSpawn('Project List', '"game"\n"skill"')
         specialresult = ' (Window Result)'
         break;
+      case 'pr':
+        $('#wholewindow').css('width', '50%');
+        $('#wholewindow').css('margin-left', '-25%');
+        windowSpawn('Presentation Check List', '-Help\n-Splash\n-Palettes/Modern\n-Quotes\n-Images/Sounds\n-Last\n-Clear\n-Count\n-Contact\n-Skill & Game\n-Code')
+        specialresult = ' (Window Result)'
+        break;
     //----------------terminal states----------------
 
     case 'game':

@@ -65,7 +65,7 @@ body {
     border: solid 5px var(--pop);
     background-color: var(--back);
     z-index: 5;
-    margin-top: -10%;
+    margin-top: -17%;
     margin-left: -35%;
     width: 70%;
     display: none;
