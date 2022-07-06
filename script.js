@@ -53,6 +53,8 @@ var leftStart = 50; //Want the terminal to be locked when starting off in login;
 var locked = 1;
 //used for the "count" command
 var commands = 0;
+//used for 'last' command
+var last = '';
 
 //.___________. _______ .______      .___  ___.  __  .__   __.      ___       __      
 //|           ||   ____||   _  \     |   \/   | |  | |  \ |  |     /   \     |  |     
@@ -83,6 +85,11 @@ if (event.key === 'Enter' && locked === 0) {
 //---------------------------------------------
 //If you are in a normal terminal state
 if (termstate === 'normal') {
+  //if running last command, use last var
+  if (entry === '>l') {
+    entry = last;
+  }
+
   //switch for entry; the first character of the entry is always > and so sliced off for convenience and ease of comprehension
   switch (entry.slice(1)) {
     case 'p0':
@@ -176,17 +183,7 @@ if (termstate === 'normal') {
       window.open('https://morb.in/', '_blank').focus();
       specialresult = ' (Link Result)';
       break;
-    //----------------images----------------
-
-    case 'linkedup':
-      $('#wholewindow').css('width', '50%');
-      $('#wholewindow').css('margin-left', '-25%');
-      windowSpawn('Pooh Shiesty Linked up with Spottemgotem', '');
-      imageResult('assets/linkedup.jpg');
-      break;
-
     //----------------audio----------------
-
     case 'bruh':
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
@@ -231,6 +228,20 @@ if (termstate === 'normal') {
       var audio = document.getElementById("audioplayer");
       audio.currentTime = 0;
       audio.src = 'assets/purge.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'secret':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/secret.mp3';
+      audio.play();
+      specialresult = ' (Audio Result)';
+      break;
+    case 'goblin':
+      var audio = document.getElementById("audioplayer");
+      audio.currentTime = 0;
+      audio.src = 'assets/goblin.mp3';
       audio.play();
       specialresult = ' (Audio Result)';
       break;
@@ -288,25 +299,89 @@ if (termstate === 'normal') {
         case 'gpa':
           specialresult = ' (Alex Result)\n4.0';
           break;
-    //----------------window results----------------
+    //----------------images----------------
 
+    case 'linkedup':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Pooh Shiesty Linked up with Spottemgotem', '');
+      imageResult('assets/linkedup.jpg');
+      break;
+    case 'alien':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('OMG is that an alien?!?!', '');
+      imageResult('assets/alien.jpg');
+      break;
+    case 'cat':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('What a funny fella', '');
+      imageResult('assets/cat.png');
+      break;
+    case 'duck':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Haha a duck!', '');
+      imageResult('assets/duck.png');
+      break;
+    case 'fight':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Who will win?', '');
+      imageResult('assets/fight.png');
+      break;
+    case 'milk':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('He cried over spilled milk...', '');
+      imageResult('assets/milk.png');
+      break;
+    case 'sleep':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Man, is he tired!', '');
+      imageResult('assets/sleep.jpg');
+      break;
+    case 'stocks':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Splendid', '');
+      imageResult('assets/stocks.jpg');
+      break;
+    case 'wizard':
+      $('#wholewindow').css('width', '30%');
+      $('#wholewindow').css('margin-left', '-15%');
+      windowSpawn('Woah! He has pvp on!', '');
+      imageResult('assets/wizard.png');
+      break;
+    //----------------window results----------------
     case 'close':
       $('.window').hide();
-      specialresult = '';
+    specialresult = '';
       break;
+
     case 'help':
+      $('#wholewindow').css('width', '70%');
+      $('#wholewindow').css('margin-left', '-35%');
       windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4)\n"count": Gets the number of commands run since initial connection\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like')
       specialresult = ' (Window Result)'
       break;
       case 'sounds':
-        windowSpawn('Sound List', '"boom"\n"kitchen"\n"classic"\n"bruh"\n"roasted"\n"purge"')
+        $('#wholewindow').css('width', '50%');
+      $('#wholewindow').css('margin-left', '-25%');
+        windowSpawn('Sound List', '"boom"\n"kitchen"\n"classic"\n"bruh"\n"roasted"\n"purge"\n"secret"')
         specialresult = ' (Window Result)'
         break;
       case 'images':
-        windowSpawn('Image List', '"linkedup"\n"sneed"')
+        $('#wholewindow').css('width', '50%');
+      $('#wholewindow').css('margin-left', '-25%');
+        windowSpawn('Image List', '"alien"\n"cat"\n"duck"\n"fight"\n"milk"\n"sleep"\n"stocks"\n"wizard"\n"linkedup"')
         specialresult = ' (Window Result)'
         break;
       case 'alex':
+        $('#wholewindow').css('width', '50%');
+      $('#wholewindow').css('margin-left', '-25%');
         windowSpawn('Alex List!', '"linkedin", "age", "interests", "name", "phone", "email", "color", "movie", "band", "show", "book", "video-game", "gpa"')
         specialresult = ' (Window Result)'
         break;
@@ -337,7 +412,11 @@ if (termstate === 'normal') {
     default:
       specialresult = ' (Unknown Command)';
       break;
-  } //if terminal is not in normal configuration, but instead game
+  }
+  if (specialresult !== ' (Unknown Command)') {
+    last = entry;
+  }
+  //if terminal is not in normal configuration, but instead game
   commands += 1;
 } else if (termstate === 'game') {
   switch (true) {
@@ -576,6 +655,10 @@ if (termstate === 'normal') {
 
   var re = /\S+@\S+\.\S+/;
   var valid = re.test(email); //Below will always trigger if there are no dots in the entry
+  if (entry === '>terminal') {
+    specialresult = '\nReturned to Terminal';
+    termstate = 'normal';
+  }
 
   if (2 === entry.indexOf(':::') + 3) {
     valid = false;
@@ -583,16 +666,19 @@ if (termstate === 'normal') {
 
 
   if (valid === true) {
-    alert('Thank you for the message: "' + message + '"!');
-    specialresult = '\nReturned to Terminal';
+    specialresult = '\nThank you for the input!\nReturned to Terminal';
     termstate = 'normal';
+    $.ajax({
+      url:'https://formspree.io/f/mdobrezb',
+      method:'POST',
+      data:{
+        em: email,
+        ms: message,
+      },
+      dataType:"json",
+  });  
+
   } //if you type in terminal, you can leave early
-
-
-  if (entry === 'terminal') {
-    specialresult = '\nReturned to Terminal';
-    termstate = 'normal';
-  }
 } //--------end of command list-----
 // Still inside the "pressed enter" at this point!
 //if you actually typed something and you aren't waiting,
