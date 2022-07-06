@@ -28,7 +28,7 @@ $.ajaxSetup({
 //Below gets IP and adds it and date into history by default
 $.getJSON("https://api.ipify.org/?format=json", function (data) {
 baseconnect = data.ip;
-$("#history").html('-\nConnection obtained from ' + baseconnect + ' at ' + today);
+$("#history").html('-\nConnection obtained from ' + baseconnect + ' at ' + today + ' \n("help" for a list of commands)');
 });
 
 //gets the permanently used historesplash, which comes back even when cleared by what it is now, after reset
@@ -388,7 +388,7 @@ if (termstate === 'normal') {
     case 'help':
       $('#wholewindow').css('width', '70%');
       $('#wholewindow').css('margin-left', '-35%');
-      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4)\n"count": Gets the number of commands run since initial connection\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like')
+      windowSpawn('Command List', '"help": Opens a list of commands\n"clear": Clears the console, closes windows, ends sounds\n"close": Closes an open window\n"sounds": Opens a list of sound commands\n"images": Opens a list of image commands\n"alex": Opens a list of commands about myself\n"game": Opens a text-based adventure game (created by me!)\n"contact": Open a contact form for me\n"terminal": Enter the main console from  game or contact\n"px": Change palette (where x is a number between 0 and 4)\n"count": Gets the number of commands run since initial connection\n"clear-count": Clears the number returned by "count"\n"quote": Prints a random quote I like\n"l": Repeats last successful command')
       specialresult = ' (Window Result)'
       break;
       case 'sounds':
@@ -407,6 +407,12 @@ if (termstate === 'normal') {
         $('#wholewindow').css('width', '50%');
       $('#wholewindow').css('margin-left', '-25%');
         windowSpawn('Alex List!', '"linkedin", "age", "interests", "name", "phone", "email", "color", "movie", "band", "show", "book", "video-game", "gpa"')
+        specialresult = ' (Window Result)'
+        break;
+      case 'projects':
+        $('#wholewindow').css('width', '50%');
+        $('#wholewindow').css('margin-left', '-25%');
+        windowSpawn('Project List', '"game"\n"skill"')
         specialresult = ' (Window Result)'
         break;
     //----------------terminal states----------------
