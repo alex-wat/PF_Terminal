@@ -27,40 +27,40 @@ body {
     background-color: var(--back);
     background-repeat: no-repeat;
     background-size: cover;
-    }
-    
-    p {
+}
+
+p {
     /* Font, size standard 2 rem, 0 margin probably unnecessary but what the hell */
     font-family: var(--fonto);
     font-size: var(--sizo);
     color: var(--pop);
     white-space: pre-wrap;
     margin: 0;
-    }
-    
-    /* All images opened by the window has 100% width, fills the window */
-    /* In other words, the height is variable here */
-    .visual {
+}
+
+/* All images opened by the window has 100% width, fills the window */
+/* In other words, the height is variable here */
+.visual {
     width: 100%;
-    }
-    
-    /* Position of header (with profile and terminal options) is fixed, covers the screen, and flexes for the two words */
-    .topmenu {
+}
+
+/* Position of header (with profile and terminal options) is fixed, covers the screen, and flexes for the two words */
+.topmenu {
     position: fixed;
     background-color: var(--pop);
     width: 100%;
     margin: 0px;
     display: flex;
     justify-content: flex-start;
-    }
-    
-    /* Text standard is white text on black bg, this is for black text on white bg (such as header) */
-    .invert {
+}
+
+/* Text standard is white text on black bg, this is for black text on white bg (such as header) */
+.invert {
     color: var(--back);
-    }
-    
-    /* For opened windows; top and left make it centered; not sure why margin-top and margin-left are here, but it works so I'm not changing it (z-index is to make it in front of everything else) */
-    .window {
+}
+
+/* For opened windows; top and left make it centered; not sure why margin-top and margin-left are here, but it works so I'm not changing it (z-index is to make it in front of everything else) */
+.window {
     position: fixed;
     border: solid 5px var(--pop);
     background-color: var(--back);
@@ -69,40 +69,40 @@ body {
     margin-left: -35%;
     width: 70%;
     display: none;
-    }
-    
-    /* Top of window flex to have title and 'X' on either side, -1 margin is stupid but works so whatever (also cursor changes!) */
-    .windowtop {
+}
+
+/* Top of window flex to have title and 'X' on either side, -1 margin is stupid but works so whatever (also cursor changes!) */
+.windowtop {
     display: flex;
     justify-content: space-between;
     margin: -1px;
     padding: 4px;
     background-color: var(--pop);
     cursor: all-scroll;
-    }
-    
-    /* Exit 'X' on the top of windows is inverted and clickable */
-    .exitThing {
+}
+
+/* Exit 'X' on the top of windows is inverted and clickable */
+.exitThing {
     color: var(--back);
     cursor: pointer;
-    }
-    
-    /* Login clickable autofills are white and not close to each other, also clearly clickable */
-    .login {
+}
+
+/* Login clickable autofills are white and not close to each other, also clearly clickable */
+.login {
     background-color: var(--pop);
     margin: 12px;
     cursor: pointer;
-    }
-    
-    /* Actual login button centered (weird how not more text is centered?) */
-    .loginClick {
+}
+
+/* Actual login button centered (weird how not more text is centered?) */
+.loginClick {
     text-align: center;
     cursor: pointer;
-    }
-    
-    /* Entire login div is inline-block for internal centering purposes, has a border */
-    /*  */
-    .wholelogin {
+}
+
+/* Entire login div is inline-block for internal centering purposes, has a border */
+/*  */
+.wholelogin {
     display: inline-block;
     position: absolute;
     /* width is 30%, leaving 70%, half of which is 35% */
@@ -114,37 +114,38 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     width: 30%;
-    }
-    
-    /* Fail text is small and also centered */
-    .failtext {
+}
+
+/* Fail text is small and also centered */
+.failtext {
     font-size: var(--sizo)/2;
     text-align: center;
-    }
-    
-    /* Menu items inside header (profile, terminal) are inverted and far from each other, also clearly clickable */
-    .menuItem {
+}
+
+/* Menu items inside header (profile, terminal) are inverted and far from each other, also clearly clickable */
+.menuItem {
     color: var(--back);
     margin-right: 40px;
     cursor: pointer;
-    }
-    
-    /* Extremely simple, all coolhovers are easily clickable */
-    .coolhover {
+}
+
+/* Extremely simple, all coolhovers are easily clickable */
+.coolhover {
     cursor: pointer;
-    }
-    
-    /* the inner 'profile' div is 'entireprofile' is flex for centering purposes */
-    #flexprofile {
+}
+
+/* the inner 'profile' div is 'entireprofile' is flex for centering purposes */
+#flexprofile {
     display: flex;
     justify-content: flex-start;
-    }
-    
-    /* Lists look consistent with the other style, non-inverted and normal size */
-    li {
+}
+
+/* Lists look consistent with the other style, non-inverted and normal size */
+li {
     font-family: var(--fonto);
-    font-size: var(--sizo);;
+    font-size: var(--sizo);
+    ;
     color: var(--pop);
     /* Square bullets instead of round ones */
     list-style-type: square;
-    }
+}
